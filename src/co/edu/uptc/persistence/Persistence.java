@@ -1,4 +1,4 @@
 package co.edu.uptc.persistence;
 
-public class Class {
+public class Persistence {
 }
