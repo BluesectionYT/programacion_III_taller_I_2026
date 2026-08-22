@@ -1,4 +1,4 @@
 package co.edu.uptc.presenter;
 
-public class Class {
+public class Presenter {
 }
