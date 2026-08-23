@@ -46,6 +46,9 @@ public class DoubleList<E> implements List<E> {
 
 			@Override
 			public boolean hasNext() {
+				if(temporalNode==null) {
+					return false;
+				}
 				if(temporalNode.getNext() != null){
 					return true;
 				}

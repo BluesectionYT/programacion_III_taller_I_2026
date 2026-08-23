@@ -4,6 +4,7 @@ import co.edu.uptc.model.Campus;
 import co.edu.uptc.model.City;
 import co.edu.uptc.model.School;
 import co.edu.uptc.model.State;
+import co.edu.uptc.structures.SimpleList;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -22,8 +23,10 @@ public class Persistence {
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader(file))) {
             String chain;
             while ((chain = bufferedReader.readLine()) != null) {
-                String[] data = chain.split(",");
-                createCity(data, result);
+                String[] data = chain.replace("\"", "").trim().split(",");
+                if(data[0].replace("\"", "").trim().equalsIgnoreCase("2.022")){
+                    createCity(data, result);
+                }
             }
         } catch (IOException e) {
             result = new State();
@@ -34,25 +37,42 @@ public class Persistence {
     private void createCity(String[] data, State state){
         City city = state.getCities().stream().filter(c -> c.getName().equalsIgnoreCase(data[1])).findFirst().orElse(null);
         if (city == null){
-            state.addCity(new City(data[1]));
-        } else{
-            createSchool(data, city);
+            city = new City(data[1]);
+            state.addCity(city);
         }
+        createSchool(data, city);
     }
 
     private void createSchool(String[] data, City city) {
         School school = city.getSchools().stream().filter(s-> s.getName().equalsIgnoreCase(data[3])).findFirst().orElse(null);
         if (school == null){
-            city.addSchool(new School(data[3], data[2]));
-        } else{
-            createCampus(data, school);
+            school = new School(data[3], data[2]);
+            city.addSchool(school);
         }
+        createCampus(data, school);
     }
 
     private void createCampus(String[] data, School school) {
         Campus campus = school.getCampus().stream().filter(c -> c.getName().equalsIgnoreCase(data[5])).findFirst().orElse(null);
         if (campus == null){
-            school.addCampus(new Campus(data[5]));
+            campus = new Campus(data[5]);
+            campus.setDaneCode(data[4]);
+            campus.setSector(data[7]);
+            campus.setZone(data[6]);
+            campus.setCourses(createCourses(data));
+            school.addCampus(campus);
         }
+    }
+
+    private SimpleList<Integer> createCourses(String[] data) {
+        SimpleList<Integer> result = new SimpleList<>();
+        for (int i = 8; i < 20; i++) {
+            if (!data[i].equalsIgnoreCase("")) {
+                result.add(Integer.parseInt(data[i]));
+            } else{
+                result.add(0);
+            }
+        }
+        return result;
     }
 }
