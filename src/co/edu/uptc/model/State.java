@@ -20,4 +20,13 @@ public class State {
     public void addCity(City city) {
         cities.add(city);
     }
+
+    public City findCity(String cityName) {
+        return this.cities.stream().filter(city -> city.getName().equals(cityName)).findFirst().orElse(null);
+    }
+
+    @Override
+    public String toString() {
+        return cities.toString();
+    }
 }

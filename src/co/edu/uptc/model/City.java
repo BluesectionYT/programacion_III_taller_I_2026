@@ -30,4 +30,15 @@ public class City {
     public void addSchool(School school) {
         this.schools.add(school);
     }
+
+    public School findSchool(String schoolName){
+        return schools.stream().filter(school -> school.getName().equals(schoolName)).findFirst().orElse(null);
+    }
+
+    @Override
+    public String toString() {
+        return "Ciudad" +
+                "Nombre " + name +
+                "\nEscuelas" + schools.toString() + '\n';
+    }
 }

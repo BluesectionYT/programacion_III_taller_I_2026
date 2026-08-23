@@ -40,4 +40,16 @@ public class School {
     public void addCampus(Campus campus) {
         this.campus.add(campus);
     }
+
+    public Campus findCampus(String campusName){
+        return campus.stream().filter(campus -> campus.getName().equals(campusName)).findFirst().orElse(null);
+    }
+
+    @Override
+    public String toString() {
+        return "Escuela" +
+                "\nNombre " + name +
+                "\nCodigo Dane " + daneCode +
+                "\nSedes " + campus.toString() + '\n';
+    }
 }

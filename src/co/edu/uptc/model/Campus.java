@@ -56,4 +56,9 @@ public class Campus {
     public void setCourses(SimpleList<Integer> courses) {
         this.courses = courses;
     }
+
+    @Override
+    public String toString() {
+        return "Sede " + name + "\nCodigo DANE " + daneCode + "\nSector " + sector + "\nZona " + zone + "\nCursos " + courses.toString();
+    }
 }
