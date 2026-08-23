@@ -26,4 +26,8 @@ public class City {
     public void setSchools(DoubleList<School> schools) {
         this.schools = schools;
     }
+
+    public void addSchool(School school) {
+        this.schools.add(school);
+    }
 }
