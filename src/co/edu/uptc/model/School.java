@@ -36,4 +36,8 @@ public class School {
     public void setCampus(SimpleList<Campus> campus) {
         this.campus = campus;
     }
+
+    public void addCampus(Campus campus) {
+        this.campus.add(campus);
+    }
 }
