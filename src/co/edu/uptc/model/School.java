@@ -52,9 +52,15 @@ public class School {
 
     @Override
     public String toString() {
-        return "Escuela" +
-                "\nNombre " + name +
-                "\nCodigo Dane " + daneCode +
-                "\nSedes " + campus.toString() + '\n';
+        StringBuilder result = new StringBuilder();
+        for(Campus campus : campus){
+            if(campus.getName() != null){
+                result.append("Escuela" +
+                        "\nNombre " + name +
+                        "\nCodigo Dane " + daneCode +
+                        "\nSedes " + campus);
+            }
+        }
+        return result.toString();
     }
 }

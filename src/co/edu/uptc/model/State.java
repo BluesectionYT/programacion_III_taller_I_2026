@@ -3,6 +3,9 @@ package co.edu.uptc.model;
 import co.edu.uptc.exceptions.ValueNotFoundException;
 import co.edu.uptc.structures.SimpleList;
 
+import java.util.Iterator;
+import java.util.concurrent.ForkJoinPool;
+
 public class State {
     private SimpleList<City> cities;
 
@@ -49,6 +52,13 @@ public class State {
 
     @Override
     public String toString() {
-        return cities.toString();
+        StringBuilder result = new  StringBuilder();
+        Iterator<City> iterator = cities.iterator();
+        for(City city : cities){
+            if(city != null){
+                result.append(city.toString());
+            }
+        }
+        return result.toString();
     }
 }

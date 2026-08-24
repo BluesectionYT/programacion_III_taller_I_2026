@@ -37,7 +37,12 @@ public class DoubleNode<E> {
 
 	@Override
 	public String toString() {
-		return value + "\n" + next;
+		StringBuilder result = new StringBuilder();
+		result.append(value.toString());
+		if (next != null) {
+			result.append(next+"\n");
+		}
+		return result.toString();
 	}
 
 }

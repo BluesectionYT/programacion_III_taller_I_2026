@@ -26,7 +26,12 @@ public class Node<E> {
 
     @Override
     public String toString() {
-        return value + " " + next;
+        StringBuilder result = new StringBuilder();
+        result.append(value.toString()+" ");
+        if (next != null) {
+            result.append(next.toString());
+        }
+        return result.toString();
     }
 
 }
