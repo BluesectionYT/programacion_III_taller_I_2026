@@ -51,7 +51,7 @@ public class City {
 
     @Override
     public String toString() {
-        return "Ciudad" +
+        return "Ciudad\n" +
                 "Nombre " + name +
                 "\nEscuelas" + schools.toString() + '\n';
     }
