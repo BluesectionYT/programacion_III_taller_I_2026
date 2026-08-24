@@ -37,8 +37,13 @@ public class School {
         this.campus = campus;
     }
 
-    public void addCampus(Campus campus) {
-        this.campus.add(campus);
+    public boolean addCampus(Campus campus) {
+        boolean result = false;
+        if(findCampus(campus.getName()) == null){
+            this.campus.add(campus);
+            result = true;
+        }
+        return result;
     }
 
     public Campus findCampus(String campusName){

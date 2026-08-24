@@ -522,7 +522,7 @@ public class SimpleList<E> implements Collection<E>, List<E> {
 
 	@Override
 	public String toString() {
-		return "SimpleList [head=" + head + "]";
+		return head.toString() + "\n";
 	}
 
 }
