@@ -1,5 +1,6 @@
 package co.edu.uptc.model;
 
+import co.edu.uptc.exceptions.ValueNotFoundException;
 import co.edu.uptc.structures.DoubleList;
 
 public class City {
@@ -27,12 +28,25 @@ public class City {
         this.schools = schools;
     }
 
-    public void addSchool(School school) {
-        this.schools.add(school);
+    public boolean addSchool(School school) {
+        boolean result = false;
+        if(findSchool(school.getName()) == null){
+            this.schools.add(school);
+            result = true;
+        }
+        return result;
     }
 
     public School findSchool(String schoolName){
         return schools.stream().filter(school -> school.getName().equals(schoolName)).findFirst().orElse(null);
+    }
+
+    public boolean addCampus(String schoolName, Campus campusToAdd) throws ValueNotFoundException {
+        School school = findSchool(schoolName);
+        if(school == null){
+            throw new ValueNotFoundException();
+        }
+        return school.addCampus(campusToAdd);
     }
 
     @Override

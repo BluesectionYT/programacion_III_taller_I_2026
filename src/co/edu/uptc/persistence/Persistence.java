@@ -1,5 +1,6 @@
 package co.edu.uptc.persistence;
 
+import co.edu.uptc.exceptions.DuplicateException;
 import co.edu.uptc.model.Campus;
 import co.edu.uptc.model.City;
 import co.edu.uptc.model.School;
@@ -34,7 +35,7 @@ public class Persistence {
         return result;
     }
 
-    private void createCity(String[] data, State state){
+    private void createCity(String[] data, State state) {
         City city = state.getCities().stream().filter(c -> c.getName().equalsIgnoreCase(data[1])).findFirst().orElse(null);
         if (city == null){
             city = new City(data[1]);

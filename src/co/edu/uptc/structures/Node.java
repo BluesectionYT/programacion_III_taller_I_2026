@@ -26,7 +26,7 @@ public class Node<E> {
 
     @Override
     public String toString() {
-        return "Node [value=" + value + ", next=" + next + "]";
+        return value + " " + next;
     }
 
 }

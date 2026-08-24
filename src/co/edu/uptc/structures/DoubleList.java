@@ -498,7 +498,7 @@ public class DoubleList<E> implements List<E> {
 
 	@Override
 	public String toString() {
-		return "DoubleList [head=" + head + "]";
+		return head.toString()+"\n";
 	}
 
 	public String toStringReverse() {
