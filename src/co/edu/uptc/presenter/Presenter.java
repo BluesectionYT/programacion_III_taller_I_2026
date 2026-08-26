@@ -6,7 +6,6 @@ import co.edu.uptc.model.School;
 import co.edu.uptc.model.State;
 import co.edu.uptc.persistence.Persistence;
 import co.edu.uptc.structures.DoubleList;
-import co.edu.uptc.structures.DoubleNode;
 import co.edu.uptc.structures.SimpleList;
 
 public class Presenter {
@@ -15,7 +14,7 @@ public class Presenter {
     public Presenter() {
         Persistence persistence = new Persistence("data/Matrícula_Instituciones_Educativas_oficiales_y_no_oficiales_-_DEPARTAMENTO_DE_BOYACÁ_20260821.csv");
         this.state = persistence.readSavedData();
-        System.out.println(state);
+        System.out.println(state.toString());
     }
 
     public SimpleList<City> getCities(){

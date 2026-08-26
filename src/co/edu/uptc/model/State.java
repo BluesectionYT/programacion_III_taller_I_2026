@@ -50,6 +50,74 @@ public class State {
         return city.addCampus(schoolName, campusToAdd);
     }
 
+    public String cityInformationBasedInCourses(String cityName) throws ValueNotFoundException {
+        City temporalCity = findCity(cityName);
+        if(temporalCity == null){
+            throw new ValueNotFoundException();
+        } else {
+            return  temporalCity.cityInformationBasedInCourses();
+        }
+    }
+
+    public String cityInformationBasedInSchools(String cityName) throws ValueNotFoundException {
+        City temporalCity = findCity(cityName);
+        if(temporalCity == null){
+            throw new ValueNotFoundException();
+        } else {
+            return  temporalCity.cityInformationBasedInSchools();
+        }
+    }
+
+    public String schoolInformationByCourses(String[] selection) throws ValueNotFoundException {
+        City temporalCity = findCity(selection[0]);
+        School temporalSchool;
+        if(temporalCity == null){
+            throw new ValueNotFoundException();
+        } else{
+            temporalSchool = temporalCity.findSchool(selection[1]);
+            if(temporalSchool == null){
+                throw new ValueNotFoundException();
+            } else {
+                return temporalSchool.schoolInformationBasesInCourses();
+            }
+        }
+    }
+
+    public String schoolInformationByCampus(String[] selection) throws ValueNotFoundException {
+        City temporalCity = findCity(selection[0]);
+        School temporalSchool;
+        if(temporalCity == null){
+            throw new ValueNotFoundException();
+        } else{
+            temporalSchool = temporalCity.findSchool(selection[1]);
+            if(temporalSchool == null){
+                throw new ValueNotFoundException();
+            } else {
+                return temporalSchool.schoolInformationBasedInCampus();
+            }
+        }
+    }
+
+    public String campusInformation(String[] selection) throws ValueNotFoundException {
+        City temporalCity = findCity(selection[0]);
+        School temporalSchool;
+        Campus temporalCampus;
+        if(temporalCity == null){
+            throw new ValueNotFoundException();
+        } else {
+            temporalSchool = temporalCity.findSchool(selection[1]);
+            if(temporalSchool == null){
+                throw new ValueNotFoundException();
+            } else {
+                temporalCampus = temporalSchool.findCampus(selection[2]);
+                if(temporalCampus == null){
+                    throw new ValueNotFoundException();
+                }
+                return temporalCampus.coursesInformation();
+            }
+        }
+    }
+
     @Override
     public String toString() {
         StringBuilder result = new  StringBuilder();
