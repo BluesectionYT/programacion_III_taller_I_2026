@@ -4,7 +4,6 @@ import co.edu.uptc.exceptions.ValueNotFoundException;
 import co.edu.uptc.structures.SimpleList;
 
 import java.util.Iterator;
-import java.util.concurrent.ForkJoinPool;
 
 public class State {
     private SimpleList<City> cities;
